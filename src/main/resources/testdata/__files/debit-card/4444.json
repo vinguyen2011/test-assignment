@@ -1,0 +1,16 @@
+{
+	"id": "{{request.path.[1]}}",
+	"status": "ACTIVE",
+	"cardNumber": 4444,
+	"cardHolder" : "User1",
+	"sequenceNumber": 4,
+	"atmLimit": {
+		"limit": 100,
+		"periodUnit": "PER_DAY"
+	},
+	"posLimit": {
+		"limit": 10000,
+		"periodUnit": "PER_MONTH"
+	},
+	"contactless" : false
+}

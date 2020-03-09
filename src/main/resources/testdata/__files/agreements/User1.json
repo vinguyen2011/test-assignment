@@ -1,0 +1,12 @@
+{
+  "agreements": [
+    {
+      "type": "IBAN",
+      "account": "1234567890"
+    },
+    {
+      "type": "IBAN",
+      "account": "1234567891"
+    }
+  ]
+}

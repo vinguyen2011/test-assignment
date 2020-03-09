@@ -1,0 +1,13 @@
+{
+  "account": "IBAN1234567894",
+  "balance": 400,
+  "created": "11-04-2004",
+  "user": "User4",
+  "debitCards": [
+    {
+      "cardId": "7777"
+    }
+  ],
+  "creditCards": [
+  ]
+}

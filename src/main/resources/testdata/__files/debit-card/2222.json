@@ -1,0 +1,16 @@
+{
+	"id": "{{request.path.[1]}}",
+	"status": "BLOCKED",
+	"cardNumber": 2222,
+	"sequenceNumber": 2,
+	"cardHolder": "User1",
+	"atmLimit": {
+		"limit": 100,
+		"periodUnit": "PER_DAY"
+	},
+	"posLimit": {
+		"limit": 10000,
+		"periodUnit": "PER_MONTH"
+	},
+	"contactless" : true
+}
