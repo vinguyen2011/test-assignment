@@ -7,7 +7,6 @@ Mocks service are available with **http://localhost:8080**:
   - Agreements of a customer (/agreements/{user})
   - Account details for a specific IBAN (/accounts/{accountId})
   - Debit card details (/debit-card/{cardId})
-  - Credit card details (/credit-card/{cardId})
   - There are some errors, please check the JsonStub file
 
 # Requirements
