@@ -14,6 +14,7 @@ Mocks service are available with **http://localhost:8080**:
   - Don't return blocked cards
   - Handle error case gracefully
   - Your endpoint should be fast
+  - Please DO NOT modify mock files for your convenient, everything has a purpose
 
 ## Non-functional but very important
   - Please write clean and readable code
