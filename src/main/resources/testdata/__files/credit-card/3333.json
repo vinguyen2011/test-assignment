@@ -1,7 +1,0 @@
-{
-	"id": "{{request.path.[1]}}",
-	"status": "ACTIVE",
-	"cardNumber": 3333,
-	"cardHolder": "User1",
-	"monthlyLimit": 3000
-}

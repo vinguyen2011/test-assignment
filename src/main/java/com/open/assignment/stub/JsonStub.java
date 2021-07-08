@@ -57,13 +57,6 @@ public class JsonStub {
         stubFor(get(urlMatching("/debit-cards/7777"))
                 .willReturn(
                         serverError()));
-
-        // Get credit card details
-        stubFor(get(urlMatching("/credit-cards/\\d+"))
-                .willReturn(aResponse()
-                        .withBodyFile("credit-card/{{request.path.[1]}}.json")
-                        .withFixedDelay(2000)
-                        .withHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE_JSON)));
     }
 
     public static void main(final String[] args) {
