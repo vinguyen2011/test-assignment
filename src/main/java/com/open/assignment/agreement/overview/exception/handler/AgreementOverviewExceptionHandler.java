@@ -19,16 +19,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @Log4j2
 public class AgreementOverviewExceptionHandler {
 
-  HttpStatus httpStatus;
-
   @ExceptionHandler(AgreementOverviewException.class)
   public ResponseEntity<ErrorResponse> applicationExceptionHandler(
       AgreementOverviewException exception) {
+    HttpStatus httpStatus;
     log.error("AgreementOverviewException occurred {} ", exception.getErrorCode());
     if (USER_ID_INVALID.getErrorCode().equals(exception.getErrorCode())) {
       httpStatus = HttpStatus.BAD_REQUEST;
-    }
-    if (NOT_FOUND.getErrorCode().equals(exception.getErrorCode())) {
+    } else if (NOT_FOUND.getErrorCode().equals(exception.getErrorCode())) {
       httpStatus = HttpStatus.NOT_FOUND;
     } else {
       httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
