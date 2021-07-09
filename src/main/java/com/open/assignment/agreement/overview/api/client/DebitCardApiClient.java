@@ -7,7 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "debitCardsApiClient", url = "{debitCardsApi.baseUrl}", configuration = ApiClientConfiguration.class)
+@FeignClient(name = "debitCardsApiClient", url = "${debitCardsApi.baseUrl}",
+    configuration = ApiClientConfiguration.class)
 public interface DebitCardApiClient {
 
   @GetMapping(value = "/{debitCardNum}",

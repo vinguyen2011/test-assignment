@@ -24,7 +24,7 @@ public class AgreementOverviewExceptionHandler {
   @ExceptionHandler(AgreementOverviewException.class)
   public ResponseEntity<ErrorResponse> applicationExceptionHandler(
       AgreementOverviewException exception) {
-    log.error("AgreementOverviewException occurred ", exception);
+    log.error("AgreementOverviewException occurred {} ", exception.getErrorCode());
     if (USER_ID_INVALID.getErrorCode().equals(exception.getErrorCode())) {
       httpStatus = HttpStatus.BAD_REQUEST;
     }
@@ -40,7 +40,7 @@ public class AgreementOverviewExceptionHandler {
 
   @ExceptionHandler(Exception.class)
   public ResponseEntity<ErrorResponse> genericExceptionHandler(Exception exception) {
-    log.error("Runtime Exception occurred ", exception);
+    log.error("Runtime Exception occurred {} ", exception.getMessage());
     var errorResponse
         = new ErrorResponse(TECHNICAL_ERROR.getErrorCode(), TECHNICAL_ERROR.getErrorMessage());
     return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);

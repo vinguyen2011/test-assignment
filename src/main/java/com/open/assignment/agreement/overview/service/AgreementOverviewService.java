@@ -55,6 +55,7 @@ public class AgreementOverviewService {
         }
       }
       productDetails.setDebitCards(debitCards);
+      products.add(productDetails);
     }
     return new AggregatedProducts(products);
   }

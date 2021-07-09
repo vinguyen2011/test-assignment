@@ -44,7 +44,7 @@ public class JsonStub {
         // Get accounts details error for 1234567893
         stubFor(get(urlMatching("/accounts/1234567893"))
                 .willReturn(
-                        serverError()));
+                        serverError().withBodyFile("accounts/{{request.path.[1]}}.json")));
 
         // Get debit card details
         stubFor(get(urlMatching("/debit-card/\\d+"))
@@ -55,9 +55,9 @@ public class JsonStub {
                                 .withHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE_JSON)));
 
         // Get debit card error for 7777
-        stubFor(get(urlMatching("/debit-cards/7777"))
+        stubFor(get(urlMatching("/debit-card/7777"))
                 .willReturn(
-                        serverError()));
+                        serverError().withBodyFile("debit-card/{{request.path.[1]}}.json")));
     }
 
     public static void main(final String[] args) {

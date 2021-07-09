@@ -7,7 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "accountsApiClient", url = "{accountsApi.baseUrl}", configuration = ApiClientConfiguration.class)
+@FeignClient(name = "accountsApiClient", url = "${accountsApi.baseUrl}",
+    configuration = ApiClientConfiguration.class)
 public interface AccountsApiClient {
 
   @GetMapping(value = "/{accountNum}",

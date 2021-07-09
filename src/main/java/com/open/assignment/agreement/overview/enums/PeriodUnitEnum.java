@@ -12,6 +12,9 @@ public enum PeriodUnitEnum {
   PER_DAY,
 
   @JsonProperty("PER_MONTH")
-  PER_MONTH
+  PER_MONTH,
+
+  @JsonProperty("PER_WEEK")
+  PER_WEEK
 
 }
