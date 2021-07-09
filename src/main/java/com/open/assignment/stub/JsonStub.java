@@ -5,6 +5,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.serverError;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlPathMatching;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.common.ClasspathFileSource;
@@ -25,10 +26,10 @@ public class JsonStub {
     private static void setUp() {
 
         // Get agreements for an user
-        stubFor(get(urlMatching("/agreements/\\d+"))
+        stubFor(get(urlPathMatching("/agreements/([a-zA-Z0-9]*)"))
                 .willReturn(
                         aResponse()
-                                .withBodyFile("agreements/User{{request.path.[1]}}.json")
+                                .withBodyFile("agreements/{{request.path.[1]}}.json")
                                 .withFixedDelay(0)
                                 .withHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE_JSON)));
 
@@ -43,10 +44,10 @@ public class JsonStub {
         // Get accounts details error for 1234567893
         stubFor(get(urlMatching("/accounts/1234567893"))
                 .willReturn(
-                        serverError()));
+                        serverError().withBodyFile("accounts/{{request.path.[1]}}.json")));
 
         // Get debit card details
-        stubFor(get(urlMatching("/debit-cards/\\d+"))
+        stubFor(get(urlMatching("/debit-card/\\d+"))
                 .willReturn(
                         aResponse()
                                 .withBodyFile("debit-card/{{request.path.[1]}}.json")
@@ -54,9 +55,9 @@ public class JsonStub {
                                 .withHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE_JSON)));
 
         // Get debit card error for 7777
-        stubFor(get(urlMatching("/debit-cards/7777"))
+        stubFor(get(urlMatching("/debit-card/7777"))
                 .willReturn(
-                        serverError()));
+                        serverError().withBodyFile("debit-card/{{request.path.[1]}}.json")));
     }
 
     public static void main(final String[] args) {
