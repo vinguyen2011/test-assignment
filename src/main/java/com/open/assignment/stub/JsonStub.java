@@ -5,6 +5,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.serverError;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlPathMatching;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.common.ClasspathFileSource;
@@ -25,10 +26,10 @@ public class JsonStub {
     private static void setUp() {
 
         // Get agreements for an user
-        stubFor(get(urlMatching("/agreements/\\d+"))
+        stubFor(get(urlPathMatching("/agreements/([a-zA-Z0-9]*)"))
                 .willReturn(
                         aResponse()
-                                .withBodyFile("agreements/User{{request.path.[1]}}.json")
+                                .withBodyFile("agreements/{{request.path.[1]}}.json")
                                 .withFixedDelay(0)
                                 .withHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE_JSON)));
 
@@ -46,7 +47,7 @@ public class JsonStub {
                         serverError()));
 
         // Get debit card details
-        stubFor(get(urlMatching("/debit-cards/\\d+"))
+        stubFor(get(urlMatching("/debit-card/\\d+"))
                 .willReturn(
                         aResponse()
                                 .withBodyFile("debit-card/{{request.path.[1]}}.json")
